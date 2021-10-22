@@ -1,0 +1,43 @@
+
+body{
+    background-color: #363740;
+}
+
+.main-background{
+    height: 100%;
+    width: 100%;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+  }
+
+.login-card{
+    margin: 0 auto;
+    width: 30%;
+    height: 60%;
+    text-align: center;
+}
+
+.card-title{
+    margin-top: 100px !important;
+    color: black;
+}
+
+.button-card{
+    background-color: #3751FF;
+    width: 80%;
+}
+
+.button-card > span{
+    color: white;
+}
+
+.input{
+    width: 315px;
+}
+
+/* .mat-card{
+    background-color: rgb(243, 243, 243);
+} */
