@@ -1,0 +1,63 @@
+html {
+  background-color: #fff !important;
+}
+
+.main-background {
+  height: 100%;
+  width: 100%;
+  font-family: Mulish;
+  font-weight: bold;
+  background-color: #fff !important;
+}
+
+.login-btn {
+  position: absolute;
+  background-color: rgba(74, 99, 253, 1);
+  right: 20px;
+  font-size: 19px;
+  font-family: Mulish;
+  width: 280px;
+}
+
+mat-sidenav {
+  margin-right: 10px;
+  font-size: 19px;
+  font-family: Mulish;
+}
+
+mat-toolbar {
+  font-size: 20px;
+  font-family: Mulish;
+}
+
+.div-prop {
+  margin-left: 5%;
+}
+
+.title {
+  color: rgba(74, 99, 253, 1);
+  font-size: 25px;
+}
+
+.text {
+  margin-left: 5%;
+  margin-right: 5%;
+  font-size: 20px;
+  text-justify: distribute;
+  text-align: justify;
+}
+
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+.row {
+  display: flex;
+}
+
+.column {
+  flex: 33.33%;
+}
