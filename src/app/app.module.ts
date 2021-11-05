@@ -21,6 +21,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { LoginScreenComponent } from './login-screen/login-screen.component';
 import { InitialPageComponent } from './initial-page/initial-page.component';
 import { CandidatesViewComponent } from './candidates-view/candidates-view.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 @NgModule({
   schemas: [CUSTOM_ELEMENTS_SCHEMA], // TODO: verificar pq o angular não está reconhecendo os componentes do Material Design
@@ -28,7 +29,8 @@ import { CandidatesViewComponent } from './candidates-view/candidates-view.compo
     AppComponent,
     LoginScreenComponent,
     InitialPageComponent,
-    CandidatesViewComponent
+    CandidatesViewComponent,
+    ResetPasswordComponent
   ],
   imports: [
     BrowserModule,

@@ -3,9 +3,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginScreenComponent } from './login-screen/login-screen.component';
 import { InitialPageComponent } from './initial-page/initial-page.component';
 import { CandidatesViewComponent } from './candidates-view/candidates-view.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 const routes: Routes = [
     { path: 'login', component: LoginScreenComponent },
+    { path: 'reset-password', component: ResetPasswordComponent },
     { path: 'initial-page', component: InitialPageComponent },
     { path: 'candidates-view', component: CandidatesViewComponent }
 ];
