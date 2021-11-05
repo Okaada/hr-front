@@ -1,44 +1,87 @@
-
-
-body{
-    background-color: #363740; 
-}
-
-.main-background{
-    height: 100%;
-    width: 100%;
+.main-background {
+  height: 100%;
+  width: 100%;
 }
 
 .container {
-    display: flex;
-    align-items: center;
-  }
-
-.login-card{
-    margin: 0 auto;
-    width: 30%;
-    height: 60%;
-    text-align: center;
+  display: flex;
+  align-items: center;
 }
 
-.card-title{
-    margin-top: 100px !important;
-    color: black;
+.card-title {
+  margin-top: 40px !important;
+  color: #a4a6b3;
+  font-family: Mulish;
+  font-weight: bold;
+  font-size: 20px;
 }
 
-.button-card{
-    background-color: #3751FF;
-    width: 80%;
+.login-label {
+  margin-top: 20px !important;
+  color: black;
+  font-family: Mulish;
+  font-weight: bold;
+  font-size: 25px;
 }
 
-.button-card > span{
-    color: white;
+.info {
+  color: #a4a6b3;
+  font-family: Mulish;
+  font-size: 15px;
 }
 
-.input{
-    width: 315px;
+.button-card {
+  background-color: #3751ff;
+  width: 80%;
+  font-family: Mulish;
+  font-weight: bold;
+  font-size: 18px;
 }
 
-/* .mat-card{
-    background-color: rgb(243, 243, 243);
-} */
+.button-card > span {
+  color: white;
+}
+
+.input {
+  width: 315px;
+}
+
+mat-card {
+  background-color: white;
+  margin: 0 auto;
+  width: 30%;
+  height: 80%;
+  text-align: center;
+}
+
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+  color: #a4a6b3 !important;
+}
+
+::ng-deep
+  .mat-form-field-appearance-outline.mat-focused
+  .mat-form-field-outline-thick {
+  color: grey !important;
+}
+
+.input-props {
+  color: black;
+  font-family: Mulish;
+}
+
+::placeholder {
+  color: #a4a6b3 !important;
+  font-weight: bold;
+}
+
+.forget-password {
+  color: #a4a6b3;
+  font-family: Mulish;
+}
+
+.subsctribe {
+  font-family: Mulish;
+  font-weight: bold;
+  font-size: 17px;
+  color: #3751ff;
+}
