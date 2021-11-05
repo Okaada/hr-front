@@ -32,7 +32,7 @@
 
 .button-card {
   background-color: #3751ff;
-  width: 80%;
+  width: 70%;
   font-family: Mulish;
   font-weight: bold;
   font-size: 18px;
@@ -77,6 +77,7 @@ mat-card {
 .forget-password {
   color: #a4a6b3;
   font-family: Mulish;
+  cursor: pointer;
 }
 
 .subsctribe {
@@ -84,4 +85,5 @@ mat-card {
   font-weight: bold;
   font-size: 17px;
   color: #3751ff;
+  cursor: pointer;
 }
