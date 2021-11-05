@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginScreenComponent } from './login-screen/login-screen.component';
 import { InitialPageComponent } from './initial-page/initial-page.component';
+import { CandidatesViewComponent } from './candidates-view/candidates-view.component';
 
 const routes: Routes = [
     { path: 'login', component: LoginScreenComponent },
-    { path: 'initial-page', component: InitialPageComponent }
+    { path: 'initial-page', component: InitialPageComponent },
+    { path: 'candidates-view', component: CandidatesViewComponent }
 ];
 
 @NgModule({
