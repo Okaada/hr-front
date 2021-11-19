@@ -1,0 +1,12 @@
+table tr th:last-child {
+    padding-right: 25px;
+    text-align: right;
+}
+
+table tr td:last-child {
+    text-align: right;
+}
+
+.no-border {
+    background: none;
+}

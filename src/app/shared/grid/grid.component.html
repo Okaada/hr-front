@@ -1,0 +1,83 @@
+<table class="table table-hover table-striped">
+  <thead>
+    <tr>
+      <th *ngFor="let item of headers">{{ item }}</th>
+      <th *ngIf="!disabledOption">Options</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of dados">
+      <td *ngFor="let coluna of colunas">{{ item[coluna] }}</td>
+      <td *ngIf="!disabledOption">
+        <button
+          class="btn btn-default no-border"
+          [disabled]="item.disabledEdit"
+          [routerLink]="item.url"
+        >
+          <i
+            class="fa fa-pencil"
+            aria-hidden="true"
+            [ngbTooltip]="item.toolTipEdit"
+          ></i>
+        </button>
+        <button
+          class="btn btn-default text-danger no-border"
+          [disabled]="item.disabledDelete"
+          (click)="open(content)"
+        >
+          <i
+            class="fa fa-remove"
+            aria-hidden="true"
+            [ngbTooltip]="item.toolTipDelete"
+          ></i>
+        </button>
+      </td>
+      <ng-template #content let-c="close" let-d="dismiss">
+        <div class="modal-header">
+          <h4 class="modal-title">Delete</h4>
+          <button
+            type="button"
+            class="close"
+            aria-label="Close"
+            (click)="d('Cross click')"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Are you sure you want to delete this item?</p>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-primary"
+            (click)="clickedKey(item)"
+          >
+            OK
+          </button>
+          <button
+            type="button"
+            class="btn btn-secondary"
+            (click)="c('Close click')"
+          >
+            Cancel
+          </button>
+        </div>
+      </ng-template>
+    </tr>
+  </tbody>
+</table>
+<h5 *ngIf="dados.length == 0">No records found!</h5>
+<pagination-controls
+  (pageChange)="clicked($event)"
+  maxSize="numberOfElements"
+  directionLinks="false"
+  screenReaderPageLabel="currentPage"
+>
+</pagination-controls>
+<!-- <ngb-pagination
+  [collectionSize]="numberOfElements"
+  [(page)]="currentPage"
+  [directionLinks]="false"
+  (pageChange)="clicked($event)"
+></ngb-pagination> -->

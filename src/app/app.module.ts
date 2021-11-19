@@ -5,7 +5,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
-import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatToolbarModule } from '@angular/material/toolbar';;
+import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
@@ -20,8 +21,10 @@ import { MatOptionModule } from '@angular/material/core';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { LoginScreenComponent } from './login-screen/login-screen.component';
 import { InitialPageComponent } from './initial-page/initial-page.component';
-import { CandidatesViewComponent } from './candidates-view/candidates-view.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { CandidateFormComponent } from './candidate/candidate-form/candidate-form.component';
+import { CandidateListComponent } from './candidate/candidate-list/candidate-list.component';
+import { SideNavComponent } from './shared/sidenav-menu/sidenav-menu.component';
 
 @NgModule({
   schemas: [CUSTOM_ELEMENTS_SCHEMA], // TODO: verificar pq o angular não está reconhecendo os componentes do Material Design
@@ -29,8 +32,10 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
     AppComponent,
     LoginScreenComponent,
     InitialPageComponent,
-    CandidatesViewComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    CandidateFormComponent,
+    CandidateListComponent,
+    SideNavComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +56,8 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
     MatSelectModule,
     MatOptionModule,
     MatProgressSpinnerModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

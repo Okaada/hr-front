@@ -1,3 +1,76 @@
+
+html {
+  background-color: #fff !important;
+}
+
+.main-background {
+  height: 100%;
+  width: 100%;
+  font-family: Mulish !important;
+  background-color: #fff !important;
+}
+
+mat-sidenav {
+  font-size: 19px;
+  font-family: Mulish;
+  width: 18%;
+}
+
+mat-toolbar {
+  font-size: 20px;
+  font-family: Mulish;
+}
+
+h1 {
+  font-family: Mulish;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 15px;
+}
+
+hr {
+  margin: 10px 0;
+}
+
+.hr1 {
+  border: 0;
+  height: 2px;
+  background-image: linear-gradient(to right, transparent, #CCC, transparent);  
+}
+
+.font {
+  font-family: Mulish;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.menu-button {
+  transition: 300ms ease-in-out;
+  transform: rotate(0deg);
+}
+
+.menu-button.rotated {
+  transform: rotate(180deg);
+}
+
+.submenu {
+  overflow-y: hidden;
+  transition: transform 300ms ease;
+  transform: scaleY(0);
+  transform-origin: top;
+  padding-left: 30px;
+}
+
+.submenu.expanded {
+  transform: scaleY(1);
+}
+
+.decricaoCol {
+  width: 80%;
+}
+
 .main-background {
   height: 100%;
   width: 100%;
