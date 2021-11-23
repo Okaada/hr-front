@@ -1,5 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'sidenav-menu',
@@ -13,6 +14,7 @@ import { MatSidenav } from '@angular/material/sidenav';
     isShowing = false;
     showSubSubMenu: boolean = false;
   
+    constructor(private router: Router) { }
     mouseenter() {
       if (!this.isExpanded) {
         this.isShowing = true;
@@ -23,5 +25,9 @@ import { MatSidenav } from '@angular/material/sidenav';
       if (!this.isExpanded) {
         this.isShowing = false;
       }
+    }
+
+    goToPage(pageName:string){
+      this.router.navigate([`${pageName}`]);
     }
   }

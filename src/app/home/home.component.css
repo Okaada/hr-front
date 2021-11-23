@@ -6,9 +6,7 @@ html {
   height: 100%;
   width: 100%;
   font-family: Mulish;
-  font-weight: bold;
   background-color: #fff !important;
-  margin-left: 15%;
 }
 
 .login-btn {
@@ -46,6 +44,7 @@ mat-toolbar {
   font-size: 20px;
   text-justify: distribute;
   text-align: justify;
+  color: black;
 }
 
 img {

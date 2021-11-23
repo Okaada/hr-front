@@ -3,15 +3,15 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginScreenComponent } from './login-screen/login-screen.component';
 import { InitialPageComponent } from './initial-page/initial-page.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
-import { CandidateFormComponent } from './candidate/candidate-form/candidate-form.component';
-import { CandidateListComponent } from './candidate/candidate-list/candidate-list.component';
+import { CandidateListComponent } from './candidate/candidate-list.component';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
     { path: 'login', component: LoginScreenComponent },
     { path: 'reset-password', component: ResetPasswordComponent },
     { path: 'initial-page', component: InitialPageComponent },
-    { path: 'candidate-form', component: CandidateFormComponent },
-    { path: 'candidate', component: CandidateListComponent }
+    { path: 'candidate', component: CandidateListComponent },
+    { path: 'home', component: HomeComponent }
 ];
 
 @NgModule({

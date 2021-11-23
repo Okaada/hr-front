@@ -22,9 +22,15 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { LoginScreenComponent } from './login-screen/login-screen.component';
 import { InitialPageComponent } from './initial-page/initial-page.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
-import { CandidateFormComponent } from './candidate/candidate-form/candidate-form.component';
-import { CandidateListComponent } from './candidate/candidate-list/candidate-list.component';
 import { SideNavComponent } from './shared/sidenav-menu/sidenav-menu.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { HttpClientModule } from '@angular/common/http';
+import { CandidateListComponent } from './candidate/candidate-list.component';
+import { AddCandidateDialogComponent } from './candidate/dialogs/add-candidate/add.dialog.component';
+import { EditCandidateDialogComponent } from './candidate/dialogs/edit-candidate/edit.dialog.component';
+import { DeleteCandidateDialogComponent } from './candidate/dialogs/delete-candidate/delete.dialog.component';
+import { DataService } from './candidate/services/data.service';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   schemas: [CUSTOM_ELEMENTS_SCHEMA], // TODO: verificar pq o angular não está reconhecendo os componentes do Material Design
@@ -33,13 +39,17 @@ import { SideNavComponent } from './shared/sidenav-menu/sidenav-menu.component';
     LoginScreenComponent,
     InitialPageComponent,
     ResetPasswordComponent,
-    CandidateFormComponent,
     CandidateListComponent,
-    SideNavComponent
+    SideNavComponent,
+    AddCandidateDialogComponent,
+    EditCandidateDialogComponent,
+    DeleteCandidateDialogComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    HttpClientModule,
     ReactiveFormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -57,9 +67,17 @@ import { SideNavComponent } from './shared/sidenav-menu/sidenav-menu.component';
     MatOptionModule,
     MatProgressSpinnerModule,
     MatSidenavModule,
-    MatListModule
+    MatListModule,
+    MatDialogModule
   ],
-  providers: [],
+  entryComponents: [
+    AddCandidateDialogComponent,
+    EditCandidateDialogComponent,
+    DeleteCandidateDialogComponent
+  ],
+  providers: [
+    DataService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
