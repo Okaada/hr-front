@@ -9,18 +9,18 @@ import { MatSort } from '@angular/material/sort';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BehaviorSubject, fromEvent, merge, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { AddBenefitDialogComponent } from './dialogs/add/add.dialog.component';
-import { DeleteBenefitDialogComponent } from './dialogs/delete/delete.dialog.component';
-import { EditBenefitDialogComponent } from './dialogs/edit/edit.dialog.component';
+import { AddEmployeeDialogComponent } from './dialogs/add/add.dialog.component';
+import { DeleteEmployeeDialogComponent } from './dialogs/delete/delete.dialog.component';
+import { EditEmployeeDialogComponent } from './dialogs/edit/edit.dialog.component';
 import { Issue } from './models/issue';
 import { DataService } from './services/data.service';
 
 @Component({
-  selector: 'app-benefit-list',
-  templateUrl: './benefit-list.component.html',
-  styleUrls: ['./benefit-list.component.css'],
+  selector: 'app-employee-list',
+  templateUrl: './employee-list.component.html',
+  styleUrls: ['./employee-list.component.css'],
 })
-export class BenefitListComponent implements OnInit {
+export class EmployeeListComponent implements OnInit {
   displayedColumns = ['id', 'nome', 'area_interesse', 'telefone'];
   exampleDatabase?: DataService | null;
   dataSource?: ExampleDataSource | any;
@@ -63,7 +63,7 @@ export class BenefitListComponent implements OnInit {
   }
 
   openAddDialog() {
-    const dialogRef = this.dialogService.open(AddBenefitDialogComponent, {
+    const dialogRef = this.dialogService.open(AddEmployeeDialogComponent, {
       data: { issue: {} },
     });
 
@@ -90,7 +90,7 @@ export class BenefitListComponent implements OnInit {
     // index row is used just for debugging proposes and can be removed
     this.index = i;
     console.log(this.index);
-    const dialogRef = this.dialogService.open(EditBenefitDialogComponent, {
+    const dialogRef = this.dialogService.open(EditEmployeeDialogComponent, {
       data: {
         id: id,
         nome: nome,
@@ -120,7 +120,7 @@ export class BenefitListComponent implements OnInit {
   deleteItem(i: number, id: number, title: string, state: string, url: string) {
     this.index = i;
     this.id = id;
-    const dialogRef = this.dialogService.open(DeleteBenefitDialogComponent, {
+    const dialogRef = this.dialogService.open(DeleteEmployeeDialogComponent, {
       data: { id: id, title: title, state: state, url: url },
     });
 

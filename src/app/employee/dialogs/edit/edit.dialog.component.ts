@@ -2,17 +2,16 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Component, Inject } from '@angular/core';
 import { DataService } from '../../services/data.service';
 import { FormControl, Validators } from '@angular/forms';
-import { Issue } from '../../models/issue';
 
 @Component({
-  selector: 'app-add.dialog',
-  templateUrl: '../../dialogs/add/add.dialog.html',
-  styleUrls: ['../../dialogs/add/add.dialog.css'],
+  selector: 'app-baza.dialog',
+  templateUrl: '../../dialogs/edit/edit.dialog.html',
+  styleUrls: ['../../dialogs/edit/edit.dialog.css'],
 })
-export class AddDepartmentDialogComponent {
+export class EditEmployeeDialogComponent {
   constructor(
-    public dialogRef: MatDialogRef<AddDepartmentDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Issue,
+    public dialogRef: MatDialogRef<EditEmployeeDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any,
     public dataService: DataService
   ) {}
 
@@ -33,7 +32,7 @@ export class AddDepartmentDialogComponent {
     this.dialogRef.close();
   }
 
-  public confirmAdd(): void {
-    this.dataService.addIssue(this.data);
+  stopEdit(): void {
+    this.dataService.updateIssue(this.data);
   }
 }

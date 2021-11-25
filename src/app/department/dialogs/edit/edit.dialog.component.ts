@@ -8,9 +8,9 @@ import { FormControl, Validators } from '@angular/forms';
   templateUrl: '../../dialogs/edit/edit.dialog.html',
   styleUrls: ['../../dialogs/edit/edit.dialog.css'],
 })
-export class EditDialogComponent {
+export class EditDepartmentDialogComponent {
   constructor(
-    public dialogRef: MatDialogRef<EditDialogComponent>,
+    public dialogRef: MatDialogRef<EditDepartmentDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     public dataService: DataService
   ) {}

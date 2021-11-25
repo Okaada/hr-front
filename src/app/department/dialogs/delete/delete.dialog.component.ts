@@ -8,9 +8,9 @@ import {DataService} from '../../services/data.service';
   templateUrl: '../../dialogs/delete/delete.dialog.html',
   styleUrls: ['../../dialogs/delete/delete.dialog.css']
 })
-export class DeleteDialogComponent {
+export class DeleteDepartmentDialogComponent {
 
-  constructor(public dialogRef: MatDialogRef<DeleteDialogComponent>,
+  constructor(public dialogRef: MatDialogRef<DeleteDepartmentDialogComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any, public dataService: DataService) { }
 
   onNoClick(): void {

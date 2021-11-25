@@ -9,18 +9,18 @@ import { MatSort } from '@angular/material/sort';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BehaviorSubject, fromEvent, merge, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { AddDialogComponent } from './dialogs/add/add.dialog.component';
-import { DeleteDialogComponent } from './dialogs/delete/delete.dialog.component';
-import { EditDialogComponent } from './dialogs/edit/edit.dialog.component';
+import { AddDepartmentDialogComponent } from './dialogs/add/add.dialog.component';
+import { DeleteDepartmentDialogComponent } from './dialogs/delete/delete.dialog.component';
+import { EditDepartmentDialogComponent } from './dialogs/edit/edit.dialog.component';
 import { Issue } from './models/issue';
 import { DataService } from './services/data.service';
 
 @Component({
-  selector: 'app-candidate-list',
-  templateUrl: './candidate-list.component.html',
-  styleUrls: ['./candidate-list.component.css'],
+  selector: 'app-department-list',
+  templateUrl: './department-list.component.html',
+  styleUrls: ['./department-list.component.css'],
 })
-export class CandidateListComponent implements OnInit {
+export class DepartmentListComponent implements OnInit {
   displayedColumns = ['id', 'nome', 'area_interesse', 'telefone'];
   exampleDatabase?: DataService | null;
   dataSource?: ExampleDataSource | any;
@@ -63,7 +63,7 @@ export class CandidateListComponent implements OnInit {
   }
 
   openAddDialog() {
-    const dialogRef = this.dialogService.open(AddDialogComponent, {
+    const dialogRef = this.dialogService.open(AddDepartmentDialogComponent, {
       data: { issue: {} },
     });
 
@@ -90,7 +90,7 @@ export class CandidateListComponent implements OnInit {
     // index row is used just for debugging proposes and can be removed
     this.index = i;
     console.log(this.index);
-    const dialogRef = this.dialogService.open(EditDialogComponent, {
+    const dialogRef = this.dialogService.open(EditDepartmentDialogComponent, {
       data: {
         id: id,
         nome: nome,
@@ -120,7 +120,7 @@ export class CandidateListComponent implements OnInit {
   deleteItem(i: number, id: number, title: string, state: string, url: string) {
     this.index = i;
     this.id = id;
-    const dialogRef = this.dialogService.open(DeleteDialogComponent, {
+    const dialogRef = this.dialogService.open(DeleteDepartmentDialogComponent, {
       data: { id: id, title: title, state: state, url: url },
     });
 

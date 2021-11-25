@@ -9,9 +9,9 @@ import { Issue } from '../../models/issue';
   templateUrl: '../../dialogs/add/add.dialog.html',
   styleUrls: ['../../dialogs/add/add.dialog.css'],
 })
-export class AddDepartmentDialogComponent {
+export class AddEmployeeDialogComponent {
   constructor(
-    public dialogRef: MatDialogRef<AddDepartmentDialogComponent>,
+    public dialogRef: MatDialogRef<AddEmployeeDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Issue,
     public dataService: DataService
   ) {}
