@@ -1,39 +1,24 @@
 <div class="container">
-  <h3 mat-dialog-title>Issue id: {{data.id}}</h3>
+  <h3 mat-dialog-title>ID do Benefício: {{data.id}}</h3>
 
   <form class="mat-dialog-content" (ngSubmit)="submit" #formControl="ngForm">
 
     <div class="form">
       <mat-form-field color="accent">
-        <input matInput #input class="form-control" placeholder="Id" [(ngModel)]="data.id" name="id" required >
+        <input matInput #input class="form-control" disabled placeholder="Id" [(ngModel)]="data.id" name="id" required >
         <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
       </mat-form-field>
     </div>
 
-    <!--Textarea for demo purposes-->
     <div class="form">
       <mat-form-field color="accent">
-        <textarea matInput #input class="form-control" placeholder="Nome" [(ngModel)]="data.nome" name="nome" required ></textarea>
+        <textarea matInput #input class="form-control" placeholder="Nome" [(ngModel)]="data.name" name="nome" required ></textarea>
         <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
       </mat-form-field>
-    </div>
-
-    <!--Contains mat-hint for characters count and has maxLengt set-->
-    <div class="form">
-      <mat-form-field color="accent">
-        <input matInput #inputstate class="form-control" placeholder="Área de Interesse" [(ngModel)]="data.area_interesse" name="area_interesse" required >
-        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
-      </mat-form-field>
-    </div>
-
-    <div class="form">
-        <mat-form-field color="accent">
-          <input matInput placeholder="Telefone" [(ngModel)]="data.telefone" name="telefone" required>
-        </mat-form-field>
     </div>
 
     <div mat-dialog-actions>
-      <button mat-button [type]="'submit'" [disabled]="!formControl.valid" [mat-dialog-close]="1" (click)="stopEdit()">Save</button>
+      <button mat-button [type]="'submit'" [disabled]="!formControl.valid" [mat-dialog-close]="1" (click)="stopEdit(data.id, data)">Save</button>
       <button mat-button (click)="onNoClick()" tabindex="-1">Cancel</button>
     </div>
   </form>

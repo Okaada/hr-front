@@ -1,19 +1,19 @@
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Component, Inject } from '@angular/core';
-import { DataService } from '../../services/data.service';
+import { DepartmentService } from '../../services/department.service';
 import { FormControl, Validators } from '@angular/forms';
-import { Issue } from '../../models/issue';
+import { DepartmentModel } from '../../models/department';
 
 @Component({
   selector: 'app-add.dialog',
   templateUrl: '../../dialogs/add/add.dialog.html',
   styleUrls: ['../../dialogs/add/add.dialog.css'],
 })
-export class AddDialogComponent {
+export class AddDepartmentDialogComponent {
   constructor(
-    public dialogRef: MatDialogRef<AddDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Issue,
-    public dataService: DataService
+    public dialogRef: MatDialogRef<AddDepartmentDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: DepartmentModel,
+    public dataService: DepartmentService
   ) {}
 
   formControl = new FormControl('', [
@@ -33,7 +33,7 @@ export class AddDialogComponent {
     this.dialogRef.close();
   }
 
-  public confirmAdd(): void {
-    this.dataService.addIssue(this.data);
+  public confirmAdd(data: any): void {
+    this.dataService.addDepartment(data).subscribe();
   }
 }

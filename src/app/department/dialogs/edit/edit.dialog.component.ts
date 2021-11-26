@@ -1,18 +1,19 @@
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Component, Inject } from '@angular/core';
-import { DataService } from '../../services/data.service';
+import { DepartmentService } from '../../services/department.service';
 import { FormControl, Validators } from '@angular/forms';
+import { DepartmentModel } from '../../models/department';
 
 @Component({
   selector: 'app-baza.dialog',
   templateUrl: '../../dialogs/edit/edit.dialog.html',
   styleUrls: ['../../dialogs/edit/edit.dialog.css'],
 })
-export class EditDialogComponent {
+export class EditDepartmentDialogComponent {
   constructor(
-    public dialogRef: MatDialogRef<EditDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any,
-    public dataService: DataService
+    public dialogRef: MatDialogRef<EditDepartmentDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: DepartmentModel,
+    public dataService: DepartmentService
   ) {}
 
   formControl = new FormControl('', [
@@ -32,7 +33,8 @@ export class EditDialogComponent {
     this.dialogRef.close();
   }
 
-  stopEdit(): void {
-    this.dataService.updateIssue(this.data);
+  stopEdit(id: any, data: any): void {
+    console.log(data)
+    this.dataService.updateDepartment(id, data).subscribe();
   }
 }

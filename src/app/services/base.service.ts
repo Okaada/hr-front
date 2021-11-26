@@ -34,7 +34,7 @@ export class BaseService<T, ID> extends CrudService<T, ID> {
   }
 
   put(
-    id: ID,
+    id: ID | number,
     t: T,
     urlComplemento?: string,
     options?: { headers: HttpHeaders }
@@ -48,7 +48,7 @@ export class BaseService<T, ID> extends CrudService<T, ID> {
     );
   }
 
-  delete(id: ID, options?: { headers: HttpHeaders }): any {
+  delete(id: ID | number, options?: { headers: HttpHeaders }): any {
     options = this.resolveOptions(options);
     console.log(this.base + id, options)
     return this.http.delete(this.base + id, options)

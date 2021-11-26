@@ -34,7 +34,6 @@ export class EditCandidateDialogComponent {
   }
 
   stopEdit(id: any, data: any): void {
-    console.log(id, data)
     this.dataService.updateCandidate(id, data).subscribe();
   }
 }

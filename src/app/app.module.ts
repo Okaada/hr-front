@@ -31,7 +31,27 @@ import { EditCandidateDialogComponent } from './candidate/dialogs/edit-candidate
 import { DeleteCandidateDialogComponent } from './candidate/dialogs/delete-candidate/delete.dialog.component';
 import { DataService } from './candidate/services/data.service';
 import { HomeComponent } from './home/home.component';
+import { BenefitListComponent } from './benefit/benefit-list.component';
+import { AddBenefitDialogComponent } from './benefit/dialogs/add/add.dialog.component';
+import { DeleteBenefitDialogComponent } from './benefit/dialogs/delete/delete.dialog.component';
+import { EditBenefitDialogComponent } from './benefit/dialogs/edit/edit.dialog.component';
+import { DepartmentListComponent } from './department/department-list.component';
+import { AddDepartmentDialogComponent } from './department/dialogs/add/add.dialog.component';
+import { DeleteDepartmentDialogComponent } from './department/dialogs/delete/delete.dialog.component';
+import { EditDepartmentDialogComponent } from './department/dialogs/edit/edit.dialog.component';
+//import { EmployeeListComponent } from './employee/employee-list.component';
+import { AddEmployeeDialogComponent } from './employee/dialogs/add/add.dialog.component';
+import { DeleteEmployeeDialogComponent } from './employee/dialogs/delete/delete.dialog.component';
+import { EditEmployeeDialogComponent } from './employee/dialogs/edit/edit.dialog.component';
+import { UserListComponent } from './user/user-list.component';
+import { AddUserDialogComponent } from './user/dialogs/add/add.dialog.component';
+import { DeleteUserDialogComponent } from './user/dialogs/delete/delete.dialog.component';
+import { EditUserDialogComponent } from './user/dialogs/edit/edit.dialog.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { BenefitService } from './benefit/services/benefit-service';
+import { DepartmentService } from './department/services/department.service';
+import { UserService } from './user/services/user.service';
+import { ResetService } from './reset-password/reset.service';
 
 @NgModule({
   schemas: [CUSTOM_ELEMENTS_SCHEMA], // TODO: verificar pq o angular não está reconhecendo os componentes do Material Design
@@ -40,12 +60,28 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     LoginScreenComponent,
     InitialPageComponent,
     ResetPasswordComponent,
-    CandidateListComponent,
     SideNavComponent,
+    HomeComponent,
+    CandidateListComponent,
     AddCandidateDialogComponent,
     EditCandidateDialogComponent,
     DeleteCandidateDialogComponent,
-    HomeComponent
+    BenefitListComponent,
+    AddBenefitDialogComponent,
+    DeleteBenefitDialogComponent,
+    EditBenefitDialogComponent,
+    DepartmentListComponent,
+    AddDepartmentDialogComponent,
+    DeleteDepartmentDialogComponent,
+    EditDepartmentDialogComponent,
+    //EmployeeListComponent,
+    //AddEmployeeDialogComponent,
+    //DeleteEmployeeDialogComponent,
+    //EditEmployeeDialogComponent,
+    UserListComponent,
+    AddUserDialogComponent,
+    DeleteUserDialogComponent,
+    EditUserDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -78,7 +114,11 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     DeleteCandidateDialogComponent
   ],
   providers: [
-    DataService
+    DataService,
+    BenefitService,
+    DepartmentService,
+    UserService,
+    ResetService
   ],
   bootstrap: [AppComponent]
 })
