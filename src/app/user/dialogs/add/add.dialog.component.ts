@@ -1,6 +1,6 @@
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Component, Inject } from '@angular/core';
-import { DataService } from '../../services/data.service';
+import { UserService } from '../../services/user.service';
 import { FormControl, Validators } from '@angular/forms';
 import { UserModel } from '../../models/user';
 
@@ -13,7 +13,7 @@ export class AddUserDialogComponent {
   constructor(
     public dialogRef: MatDialogRef<AddUserDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: UserModel,
-    public dataService: DataService
+    public dataService: UserService
   ) {}
 
   formControl = new FormControl('', [
@@ -34,6 +34,6 @@ export class AddUserDialogComponent {
   }
 
   public confirmAdd(data: any): void {
-    this.dataService.addUser(data).subscribe();
+    this.dataService.addUsers(data).subscribe();
   }
 }

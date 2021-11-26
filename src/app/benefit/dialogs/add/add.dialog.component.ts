@@ -1,6 +1,6 @@
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Component, Inject } from '@angular/core';
-import { DataService } from '../../services/data.service';
+import { BenefitService } from '../../services/benefit-service';
 import { FormControl, Validators } from '@angular/forms';
 import { BenefitModel } from '../../models/benefit';
 
@@ -13,7 +13,7 @@ export class AddBenefitDialogComponent {
   constructor(
     public dialogRef: MatDialogRef<AddBenefitDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: BenefitModel,
-    public dataService: DataService
+    public dataService: BenefitService
   ) {}
 
   formControl = new FormControl('', [

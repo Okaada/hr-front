@@ -6,7 +6,7 @@ import { MatSidenav } from '@angular/material/sidenav';
 import { AddUserDialogComponent } from './dialogs/add/add.dialog.component';
 import { DeleteUserDialogComponent } from './dialogs/delete/delete.dialog.component';
 import { EditUserDialogComponent } from './dialogs/edit/edit.dialog.component';
-import { DataService } from './services/data.service';
+import { UserService } from './services/user.service';
 
 @Component({
   selector: 'app-user-list',
@@ -14,8 +14,8 @@ import { DataService } from './services/data.service';
   styleUrls: ['./user-list.component.css'],
 })
 export class UserListComponent implements OnInit {
-  displayedColumns = ['id', 'email'];
-  exampleDatabase?: DataService | null;
+  displayedColumns = ['id', 'email',];
+  exampleDatabase?: UserService | null;
   index?: number;
   id?: string;
   isExpanded = true;
@@ -28,7 +28,7 @@ export class UserListComponent implements OnInit {
   constructor(
     public httpClient: HttpClient,
     public dialogService: MatDialog,
-    public dataService: DataService
+    public dataService: UserService
   ) {}
 
   @ViewChild('sidenav') sidenav?: MatSidenav;

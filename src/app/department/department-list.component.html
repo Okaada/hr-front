@@ -29,7 +29,7 @@
         <mat-header-cell *matHeaderCellDef mat-sort-header
           >Id Responsável</mat-header-cell
         >
-        <mat-cell *matCellDef="let row"> {{ row.employeeId }}</mat-cell>
+        <mat-cell *matCellDef="let row"> {{ row.managerId }}</mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="name">
@@ -52,7 +52,7 @@
           <button
             mat-icon-button
             color="accent"
-            (click)="startEdit(i, row.id, row.employeeId, row.name)"
+            (click)="startEdit(i, row.id, row.managerId, row.name)"
           >
             <mat-icon aria-label="Edit">edit</mat-icon>
           </button>
@@ -73,7 +73,7 @@
 
     <mat-paginator
       #paginator
-      [length]="result.length"
+      [length]="10"
       [pageIndex]="0"
       [pageSize]="10"
       [pageSizeOptions]="[5, 10, 25, 100]"

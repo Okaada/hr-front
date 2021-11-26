@@ -6,7 +6,7 @@ import { MatSidenav } from '@angular/material/sidenav';
 import { AddDepartmentDialogComponent } from './dialogs/add/add.dialog.component';
 import { DeleteDepartmentDialogComponent } from './dialogs/delete/delete.dialog.component';
 import { EditDepartmentDialogComponent } from './dialogs/edit/edit.dialog.component';
-import { DataService } from './services/data.service';
+import { DepartmentService } from './services/department.service';
 
 @Component({
   selector: 'app-department-list',
@@ -14,8 +14,8 @@ import { DataService } from './services/data.service';
   styleUrls: ['./department-list.component.css'],
 })
 export class DepartmentListComponent implements OnInit {
-  displayedColumns = ['id', 'employeeId', 'nome'];
-  exampleDatabase?: DataService | null;
+  displayedColumns = ['id', 'employeeId', 'name', 'actions'];
+  exampleDatabase?: DepartmentService | null;
   index?: number;
   id?: number;
   isExpanded = true;
@@ -28,7 +28,7 @@ export class DepartmentListComponent implements OnInit {
   constructor(
     public httpClient: HttpClient,
     public dialogService: MatDialog,
-    public dataService: DataService
+    public dataService: DepartmentService
   ) {}
 
   @ViewChild('sidenav') sidenav?: MatSidenav;
@@ -66,25 +66,20 @@ export class DepartmentListComponent implements OnInit {
     });
   }
 
-  startEdit(i: number, id: number, employeeId: string, name: string) {
+  startEdit(i: number, id: number, managerId: string, name: string) {
     this.id = id;
     this.index = i;
     const dialogRef = this.dialogService.open(EditDepartmentDialogComponent, {
       data: {
         id: id,
-        employeeId: employeeId,
+        managerId: managerId,
         name: name,
       },
     });
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result === 1) {
-        if (this.exampleDatabase) {
-          const foundIndex = this.exampleDatabase.dataChange.value.findIndex(
-            (x) => x.id === this.id
-          );
-          if (foundIndex) this.refreshTable();
-        }
+        this.refreshTable();
       }
     });
   }

@@ -6,7 +6,7 @@ import { MatSidenav } from '@angular/material/sidenav';
 import { AddBenefitDialogComponent } from './dialogs/add/add.dialog.component';
 import { DeleteBenefitDialogComponent } from './dialogs/delete/delete.dialog.component';
 import { EditBenefitDialogComponent } from './dialogs/edit/edit.dialog.component';
-import { DataService } from './services/data.service';
+import { BenefitService } from './services/benefit-service';
 
 @Component({
   selector: 'app-benefit-list',
@@ -14,8 +14,8 @@ import { DataService } from './services/data.service';
   styleUrls: ['./benefit-list.component.css'],
 })
 export class BenefitListComponent implements OnInit {
-  displayedColumns = ['id', 'nome'];
-  exampleDatabase?: DataService | null;
+  displayedColumns = ['id', 'nome', 'actions'];
+  exampleDatabase?: BenefitService | null;
   index?: number;
   id?: number;
   isExpanded = true;
@@ -28,7 +28,7 @@ export class BenefitListComponent implements OnInit {
   constructor(
     public httpClient: HttpClient,
     public dialogService: MatDialog,
-    public dataService: DataService
+    public dataService: BenefitService
   ) {}
 
   @ViewChild('sidenav') sidenav?: MatSidenav;
@@ -82,13 +82,7 @@ export class BenefitListComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result === 1) {
-        if (this.exampleDatabase) {
-          const foundIndex = this.exampleDatabase.dataChange.value.findIndex(
-            (x) => x.id === this.id
-          );
-          if (foundIndex)
-            this.refreshTable();
-        }
+        this.refreshTable();
       }
     });
   }
@@ -101,7 +95,9 @@ export class BenefitListComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      this.refreshTable();
+      if (result === 1) {
+        this.refreshTable();
+      }
     });
   }
 

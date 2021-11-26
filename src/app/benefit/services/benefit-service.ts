@@ -1,31 +1,31 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { BenefitModel } from '../models/benefit';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BaseService } from 'src/app/services/base.service';
-import { UserModel } from '../models/user';
 
 @Injectable()
-export class DataService extends BaseService<any, string> {
-  dataChange: BehaviorSubject<UserModel[]> = new BehaviorSubject<
-    UserModel[]
+export class BenefitService extends BaseService<any, string> {
+  dataChange: BehaviorSubject<BenefitModel[]> = new BehaviorSubject<
+    BenefitModel[]
   >([]);
   dialogData: any;
   token = localStorage.getItem('currentUser') || '';
   obj = JSON.parse(this.token);
 
   constructor(private httpClient: HttpClient) {
-    super('/api/User/', httpClient);
+    super('/api/Benefits/', httpClient);
   }
 
-  getUsers(): Observable<any> {
+  getBenefits(): Observable<any> {
     let auth = new HttpHeaders().set(
       'Authorization',
       `Bearer ${this.obj.token}`
     );
-    return this.get(`users`, { headers: auth });
+    return this.get(``, { headers: auth });
   }
 
-  updateUsers(id: number, data: UserModel): Observable<any> {
+  updateBenefit(id: number, data: BenefitModel): Observable<any> {
     let auth = new HttpHeaders().set(
       'Authorization',
       `Bearer ${this.obj.token}`
@@ -33,7 +33,7 @@ export class DataService extends BaseService<any, string> {
     return this.put(id, data, `update`, { headers: auth });
   }
 
-  deleteUsers(id: number): Observable<any> {
+  deleteBenefit(id: number): Observable<any> {
     let auth = new HttpHeaders().set(
       'Authorization',
       `Bearer ${this.obj.token}`
@@ -41,11 +41,11 @@ export class DataService extends BaseService<any, string> {
     return this.delete(id, { headers: auth });
   }
 
-  addUsers(body: UserModel) {
+  addBenefit(body: BenefitModel) {
     let auth = new HttpHeaders().set(
       'Authorization',
       `Bearer ${this.obj.token}`
     );
-    return this.post(body, '', { headers: auth });
+    return this.post(body, 'create', { headers: auth });
   }
 }

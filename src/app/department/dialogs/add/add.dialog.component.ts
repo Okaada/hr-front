@@ -1,6 +1,6 @@
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Component, Inject } from '@angular/core';
-import { DataService } from '../../services/data.service';
+import { DepartmentService } from '../../services/department.service';
 import { FormControl, Validators } from '@angular/forms';
 import { DepartmentModel } from '../../models/department';
 
@@ -13,7 +13,7 @@ export class AddDepartmentDialogComponent {
   constructor(
     public dialogRef: MatDialogRef<AddDepartmentDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DepartmentModel,
-    public dataService: DataService
+    public dataService: DepartmentService
   ) {}
 
   formControl = new FormControl('', [

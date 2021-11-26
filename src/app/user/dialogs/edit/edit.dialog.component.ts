@@ -1,6 +1,6 @@
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Component, Inject } from '@angular/core';
-import { DataService } from '../../services/data.service';
+import { UserService } from '../../services/user.service';
 import { FormControl, Validators } from '@angular/forms';
 import { UserModel } from '../../models/user';
 
@@ -13,7 +13,7 @@ export class EditUserDialogComponent {
   constructor(
     public dialogRef: MatDialogRef<EditUserDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: UserModel,
-    public dataService: DataService
+    public dataService: UserService
   ) {}
 
   formControl = new FormControl('', [
@@ -33,7 +33,7 @@ export class EditUserDialogComponent {
     this.dialogRef.close();
   }
 
-  stopEdit(id: any, data: any): void {
-    this.dataService.updateUser(id, data).subscribe();
+  stopEdit(): void {
+    this.dataService.updateUsers(this.data.id, this.data).subscribe();
   }
 }

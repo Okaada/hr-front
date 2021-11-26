@@ -39,7 +39,7 @@ import { DepartmentListComponent } from './department/department-list.component'
 import { AddDepartmentDialogComponent } from './department/dialogs/add/add.dialog.component';
 import { DeleteDepartmentDialogComponent } from './department/dialogs/delete/delete.dialog.component';
 import { EditDepartmentDialogComponent } from './department/dialogs/edit/edit.dialog.component';
-import { EmployeeListComponent } from './employee/employee-list.component';
+//import { EmployeeListComponent } from './employee/employee-list.component';
 import { AddEmployeeDialogComponent } from './employee/dialogs/add/add.dialog.component';
 import { DeleteEmployeeDialogComponent } from './employee/dialogs/delete/delete.dialog.component';
 import { EditEmployeeDialogComponent } from './employee/dialogs/edit/edit.dialog.component';
@@ -48,6 +48,9 @@ import { AddUserDialogComponent } from './user/dialogs/add/add.dialog.component'
 import { DeleteUserDialogComponent } from './user/dialogs/delete/delete.dialog.component';
 import { EditUserDialogComponent } from './user/dialogs/edit/edit.dialog.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { BenefitService } from './benefit/services/benefit-service';
+import { DepartmentService } from './department/services/department.service';
+import { UserService } from './user/services/user.service';
 
 @NgModule({
   schemas: [CUSTOM_ELEMENTS_SCHEMA], // TODO: verificar pq o angular não está reconhecendo os componentes do Material Design
@@ -70,10 +73,10 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     AddDepartmentDialogComponent,
     DeleteDepartmentDialogComponent,
     EditDepartmentDialogComponent,
-    EmployeeListComponent,
-    AddEmployeeDialogComponent,
-    DeleteEmployeeDialogComponent,
-    EditEmployeeDialogComponent,
+    //EmployeeListComponent,
+    //AddEmployeeDialogComponent,
+    //DeleteEmployeeDialogComponent,
+    //EditEmployeeDialogComponent,
     UserListComponent,
     AddUserDialogComponent,
     DeleteUserDialogComponent,
@@ -110,7 +113,10 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     DeleteCandidateDialogComponent
   ],
   providers: [
-    DataService
+    DataService,
+    BenefitService,
+    DepartmentService,
+    UserService
   ],
   bootstrap: [AppComponent]
 })

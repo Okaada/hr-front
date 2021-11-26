@@ -5,7 +5,7 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { BaseService } from 'src/app/services/base.service';
 
 @Injectable()
-export class DataService extends BaseService<any, string> {
+export class DepartmentService extends BaseService<any, string> {
   dataChange: BehaviorSubject<DepartmentModel[]> = new BehaviorSubject<
     DepartmentModel[]
   >([]);
@@ -14,7 +14,7 @@ export class DataService extends BaseService<any, string> {
   obj = JSON.parse(this.token);
 
   constructor(private httpClient: HttpClient) {
-    super('/api/Department/', httpClient);
+    super('/api/Departments', httpClient);
   }
 
   getDepartments(): Observable<any> {
@@ -22,7 +22,7 @@ export class DataService extends BaseService<any, string> {
       'Authorization',
       `Bearer ${this.obj.token}`
     );
-    return this.get(`departments`, { headers: auth });
+    return this.get(``, { headers: auth });
   }
 
   updateDepartment(id: number, data: DepartmentModel): Observable<any> {
@@ -30,7 +30,7 @@ export class DataService extends BaseService<any, string> {
       'Authorization',
       `Bearer ${this.obj.token}`
     );
-    return this.put(id, data, `update`, { headers: auth });
+    return this.put(id, data,  '', { headers: auth });
   }
 
   deleteDepartment(id: number): Observable<any> {
@@ -38,7 +38,7 @@ export class DataService extends BaseService<any, string> {
       'Authorization',
       `Bearer ${this.obj.token}`
     );
-    return this.delete(id, { headers: auth });
+    return this.delete('/'+id, { headers: auth });
   }
 
   addDepartment(body: DepartmentModel) {
@@ -46,6 +46,6 @@ export class DataService extends BaseService<any, string> {
       'Authorization',
       `Bearer ${this.obj.token}`
     );
-    return this.post(body, '', { headers: auth });
+    return this.post(body, '/create', { headers: auth });
   }
 }

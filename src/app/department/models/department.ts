@@ -1,5 +1,5 @@
 export class DepartmentModel {
   id: number = 0;
-  employeeId: string = '';
+  managerId: string = '';
   name: string = '';
 }
