@@ -14,7 +14,7 @@ export class UserService extends BaseService<any, string> {
   obj = JSON.parse(this.token);
 
   constructor(private httpClient: HttpClient) {
-    super('/api/User/', httpClient);
+    super('/api/Users/', httpClient);
   }
 
   getUsers(): Observable<any> {
@@ -22,7 +22,7 @@ export class UserService extends BaseService<any, string> {
       'Authorization',
       `Bearer ${this.obj.token}`
     );
-    return this.get(`users`, { headers: auth });
+    return this.get(``, { headers: auth });
   }
 
   updateUsers(id: string, data: UserModel): Observable<any> {

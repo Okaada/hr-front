@@ -14,7 +14,7 @@ import { UserService } from './services/user.service';
   styleUrls: ['./user-list.component.css'],
 })
 export class UserListComponent implements OnInit {
-  displayedColumns = ['id', 'email',];
+  displayedColumns = ['id', 'email', 'actions'];
   exampleDatabase?: UserService | null;
   index?: number;
   id?: string;
@@ -63,45 +63,6 @@ export class UserListComponent implements OnInit {
       if (result === 1) {
         this.refreshTable();
       }
-    });
-  }
-
-  startEdit(
-    i: number,
-    id: string,
-    name: string
-  ) {
-    this.id = id;
-    this.index = i;
-    const dialogRef = this.dialogService.open(EditUserDialogComponent, {
-      data: {
-        id: id,
-        name: name
-      },
-    });
-
-    dialogRef.afterClosed().subscribe((result) => {
-      if (result === 1) {
-        if (this.exampleDatabase) {
-          const foundIndex = this.exampleDatabase.dataChange.value.findIndex(
-            (x) => x.id === this.id
-          );
-          if (foundIndex)
-            this.refreshTable();
-        }
-      }
-    });
-  }
-
-  deleteItem(i: number, id: string, name: string) {
-    this.index = i;
-    this.id = id;
-    const dialogRef = this.dialogService.open(DeleteUserDialogComponent, {
-      data: { id: id, name: name },
-    });
-
-    dialogRef.afterClosed().subscribe((result) => {
-      this.refreshTable();
     });
   }
 

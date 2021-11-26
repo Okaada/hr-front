@@ -51,6 +51,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { BenefitService } from './benefit/services/benefit-service';
 import { DepartmentService } from './department/services/department.service';
 import { UserService } from './user/services/user.service';
+import { ResetService } from './reset-password/reset.service';
 
 @NgModule({
   schemas: [CUSTOM_ELEMENTS_SCHEMA], // TODO: verificar pq o angular não está reconhecendo os componentes do Material Design
@@ -80,7 +81,7 @@ import { UserService } from './user/services/user.service';
     UserListComponent,
     AddUserDialogComponent,
     DeleteUserDialogComponent,
-    EditUserDialogComponent
+    EditUserDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -116,7 +117,8 @@ import { UserService } from './user/services/user.service';
     DataService,
     BenefitService,
     DepartmentService,
-    UserService
+    UserService,
+    ResetService
   ],
   bootstrap: [AppComponent]
 })

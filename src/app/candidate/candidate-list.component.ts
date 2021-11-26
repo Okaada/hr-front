@@ -101,15 +101,7 @@ export class CandidateListComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result === 1) {
-        if (this.exampleDatabase) {
-          const foundIndex = this.exampleDatabase.dataChange.value.findIndex(
-            (x) => x.id === this.id
-          );
-          if (foundIndex)
-            //this.exampleDatabase.dataChange.value[foundIndex] =
-            //this.dataService.getDialogData();
-            this.refreshTable();
-        }
+          this.refreshTable();
       }
     });
   }
