@@ -6,26 +6,21 @@
       <mat-card-content>
         <p class="login-label">Login</p>
         <p class="info">Insira o seu e-mail e senha abaixo</p>
-        <form>
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
           <mat-form-field appearance="outline" class="input">
-            <input type="text" class="input-props" matInput placeholder="Email" />
+            <input formControlName="username" type="text" class="input-props" matInput placeholder="Email" />
           </mat-form-field>
           <div style="text-align: right; margin-right: 12%;">
               <a class="forget-password" (click)="goToPage('reset-password')">Esqueceu sua senha?</a>
           </div>
           <mat-form-field appearance="outline" class="input">
-            <input type="password" class="input-props" matInput placeholder="Senha" />
+            <input formControlName="password"  type="password" class="input-props" matInput placeholder="Senha" />
           </mat-form-field>
           <div>
-            <button class="button-card" type="submit" mat-button>
+            <button class="button-card" (click)="onSubmit()" type="submit" mat-button>
               <span>Acessar</span>
             </button>
           </div>
-          <!-- <br><br>
-          <div>
-            <p class="info">Ainda não possui uma conta?</p>
-            <a class="subsctribe" href="https://www.w3schools.com">Cadastre-se!</a>
-          </div> -->
         </form>
       </mat-card-content>
     </mat-card>

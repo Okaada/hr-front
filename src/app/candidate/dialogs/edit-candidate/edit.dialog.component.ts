@@ -2,6 +2,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Component, Inject } from '@angular/core';
 import { DataService } from '../../services/data.service';
 import { FormControl, Validators } from '@angular/forms';
+import { CandidateModel } from '../../models/CandidateModel';
 
 @Component({
   selector: 'app-baza.dialog',
@@ -11,7 +12,7 @@ import { FormControl, Validators } from '@angular/forms';
 export class EditCandidateDialogComponent {
   constructor(
     public dialogRef: MatDialogRef<EditCandidateDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any,
+    @Inject(MAT_DIALOG_DATA) public data: CandidateModel,
     public dataService: DataService
   ) {}
 
@@ -32,7 +33,8 @@ export class EditCandidateDialogComponent {
     this.dialogRef.close();
   }
 
-  stopEdit(): void {
-    this.dataService.updateIssue(this.data);
+  stopEdit(id: any, data: any): void {
+    console.log(id, data)
+    this.dataService.updateCandidate(id, data).subscribe();
   }
 }

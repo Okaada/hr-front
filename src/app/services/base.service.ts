@@ -48,6 +48,17 @@ export class BaseService<T, ID> extends CrudService<T, ID> {
     );
   }
 
+  delete(id: ID, options?: { headers: HttpHeaders }): any {
+    options = this.resolveOptions(options);
+    console.log(this.base + id, options)
+    return this.http.delete(this.base + id, options)
+      .pipe(
+        catchError((e: HttpErrorResponse) => {
+          return throwError(e);
+        })
+      );
+  }
+
   patch(
     id: ID,
     t: T,
@@ -78,6 +89,7 @@ export class BaseService<T, ID> extends CrudService<T, ID> {
         })
       );
   }
+
 
   private resolveOptions(options: any) {
     if (options === null || options === undefined) {

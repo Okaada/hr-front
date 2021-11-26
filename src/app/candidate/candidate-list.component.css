@@ -4,18 +4,23 @@ html {
 
 .main-background {
   height: 100%;
-  width: 100%;
+  max-width: 100%;
   font-family: Mulish !important;
   background-color: #fff !important;
 }
 
 mat-table {
   font-family: Mulish !important;
+  height: 100% !important;
+
 }
 
 mat-header-cell {
   font-size: 20px;
 }
+
+mat-paginator {font-family: Mulish !important;} 
+
 
 ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
   color: #a4a6b3 !important;
@@ -50,7 +55,10 @@ mat-toolbar {
   color: black;
   font-weight: bold;
   background-color: white;
-  margin-left: 15%;
+   margin-left: 15%;
+  max-width: 100%;
+  overflow: auto;
+  
 }
 
 h1 {
@@ -137,26 +145,6 @@ hr {
   font-style: italic;
 }
 
-.mat-cell:nth-child(1),
-.mat-header-cell:nth-child(1) {
-  flex: 0 0 6%;
-}
-
-.mat-cell:nth-child(2),
-.mat-header-cell:nth-child(2) {
-  flex: 0 0 30%;
-}
-
-.mat-cell:nth-child(3),
-.mat-header-cell:nth-child(3) {
-  flex: 0 0 30%;
-}
-
-.mat-cell:nth-child(7),
-.mat-header-cell:nth-child(7) {
-  flex: 0 0 7%;
-}
-
 .btn {
   background-color: #3751ff;
   margin-left: 25px;
@@ -164,4 +152,8 @@ hr {
   font-family: Mulish;
   font-weight: bold;
   font-size: 18px;
+}
+
+.maxSize {
+
 }

@@ -31,6 +31,7 @@ import { EditCandidateDialogComponent } from './candidate/dialogs/edit-candidate
 import { DeleteCandidateDialogComponent } from './candidate/dialogs/delete-candidate/delete.dialog.component';
 import { DataService } from './candidate/services/data.service';
 import { HomeComponent } from './home/home.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   schemas: [CUSTOM_ELEMENTS_SCHEMA], // TODO: verificar pq o angular não está reconhecendo os componentes do Material Design
@@ -68,7 +69,8 @@ import { HomeComponent } from './home/home.component';
     MatProgressSpinnerModule,
     MatSidenavModule,
     MatListModule,
-    MatDialogModule
+    MatDialogModule,
+    MatPaginatorModule
   ],
   entryComponents: [
     AddCandidateDialogComponent,
