@@ -1,47 +1,57 @@
-import {Injectable} from '@angular/core';
-import {BehaviorSubject} from 'rxjs';
-import {Issue} from '../models/issue';
-import {HttpClient, HttpErrorResponse} from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { CandidateModel } from '../models/CandidateModel';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { ThrowStmt } from '@angular/compiler';
+import { BaseService } from '../../services/base.service';
 
 @Injectable()
-export class DataService {
+export class DataService extends BaseService<any, string> {
   private readonly API_URL = 'https://api.github.com/repos/angular/angular/issues';
 
-  dataChange: BehaviorSubject<Issue[]> = new BehaviorSubject<Issue[]>([]);
+  dataChange: BehaviorSubject<CandidateModel[]> = new BehaviorSubject<CandidateModel[]>([]);
   // Temporarily stores data from dialogs
   dialogData: any;
+  candidateUrl = 'http://localhost:5000/api/Candidate/';
+  token = localStorage.getItem('currentUser') || '';
+  obj = JSON.parse(this.token);
 
-  constructor(private httpClient: HttpClient) {}
-
-  get data(): Issue[] {
-    return this.dataChange.value;
+  constructor(private httpClient: HttpClient) {
+    super('/api/Candidate/', httpClient)
   }
 
-  getDialogData() {
-    return this.dialogData;
+  getCandidates(): Observable<any> {
+    let auth = new HttpHeaders().set('Authorization', `Bearer ${this.obj.token}`);
+    return this.get(`candidates`, { headers: auth })
   }
 
-  /** CRUD METHODS */
-  getAllIssues(): void {
-    this.httpClient.get<Issue[]>(this.API_URL).subscribe(data => {
-        this.dataChange.next(data);
-      },
-      (error: HttpErrorResponse) => {
-      console.log (error.name + ' ' + error.message);
-      });
+  getCandidatesById(id: string): Observable<any> {
+    let auth = new HttpHeaders().set('Authorization', `Bearer ${this.obj.token}`);
+    return this.get(`candidate/${id}`, { headers: auth })
   }
 
-  // DEMO ONLY, you can find working methods below
-  addIssue(issue: Issue): void {
-    this.dialogData = issue;
+  updateCandidate(id: string, data: CandidateModel): Observable<any> {
+    let auth = new HttpHeaders().set('Authorization', `Bearer ${this.obj.token}`);
+    return this.put(id, data, `update`, { headers: auth })
   }
 
-  updateIssue(issue: Issue): void {
-    this.dialogData = issue;
+  deleteCandidate(id: string): Observable<any> {
+    let auth = new HttpHeaders().set('Authorization', `Bearer ${this.obj.token}`);
+    return this.delete(id, { headers: auth });
   }
 
-  deleteIssue(id: number): void {
-    console.log(id);
+  addCandidate(candidateModel: CandidateModel) {
+    let auth = new HttpHeaders().set('Authorization', `Bearer ${this.obj.token}`);
+    console.log(candidateModel, 'ser')
+    return this.post(candidateModel, '', { headers: auth })
+  }
+
+  updateIssue(candidateModel: CandidateModel): void {
+    this.dialogData = candidateModel;
+  }
+
+  deleteIssue(candidateModel: number): void {
+    console.log(candidateModel);
   }
 }
 

@@ -47,6 +47,7 @@ import { UserListComponent } from './user/user-list.component';
 import { AddUserDialogComponent } from './user/dialogs/add/add.dialog.component';
 import { DeleteUserDialogComponent } from './user/dialogs/delete/delete.dialog.component';
 import { EditUserDialogComponent } from './user/dialogs/edit/edit.dialog.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   schemas: [CUSTOM_ELEMENTS_SCHEMA], // TODO: verificar pq o angular não está reconhecendo os componentes do Material Design
@@ -100,7 +101,8 @@ import { EditUserDialogComponent } from './user/dialogs/edit/edit.dialog.compone
     MatProgressSpinnerModule,
     MatSidenavModule,
     MatListModule,
-    MatDialogModule
+    MatDialogModule,
+    MatPaginatorModule
   ],
   entryComponents: [
     AddCandidateDialogComponent,
