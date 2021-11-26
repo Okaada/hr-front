@@ -2,7 +2,7 @@
   <sidenav-menu></sidenav-menu>
 
   <mat-toolbar>
-    <span>Painel de Candidatos</span>
+    <span>Painel de Usuários</span>
     <span class="spacer"></span>
     Usuário xyz
     <button mat-icon-button>
@@ -10,47 +10,26 @@
     </button>
   </mat-toolbar>
 
-  <div class="container mat-elevation-z8" style="margin-left: 15%;">
+  <div class="container mat-elevation-z8" style="margin-left: 15%">
     <div class="form">
-      <!-- <mat-form-field class="filter"
-        floatPlaceholder="never"
-        appearance="outline"
-        color="accent"
-      >
-        <input matInput #filter placeholder="Filter issues" />
-      </mat-form-field> -->
       <mat-form-field appearance="outline" class="filter">
-        <mat-label style="color: grey;">Conteúdo a ser consultado</mat-label>
+        <mat-label style="color: grey">Conteúdo a ser consultado</mat-label>
         <input type="text" #filter class="input-props" matInput />
       </mat-form-field>
       <button mat-button class="btn">Buscar</button>
     </div>
 
-    <mat-table #table [dataSource]="dataSource" matSort class="mat-cell">
+    <mat-table #table [dataSource]="result" matSort class="mat-cell">
       <ng-container matColumnDef="id">
         <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
         <mat-cell *matCellDef="let row">{{ row.id }}</mat-cell>
       </ng-container>
 
-      <ng-container matColumnDef="nome">
+      <ng-container matColumnDef="email">
         <mat-header-cell *matHeaderCellDef mat-sort-header
-          >Nome</mat-header-cell
+          >E-mail</mat-header-cell
         >
-        <mat-cell *matCellDef="let row"> {{ row.nome }}</mat-cell>
-      </ng-container>
-
-      <ng-container matColumnDef="area_interesse">
-        <mat-header-cell *matHeaderCellDef mat-sort-header
-          >Área de interesse</mat-header-cell
-        >
-        <mat-cell *matCellDef="let row"> {{ row.area_interesse }}</mat-cell>
-      </ng-container>
-
-      <ng-container matColumnDef="telefone">
-        <mat-header-cell *matHeaderCellDef mat-sort-header
-          >Telefone</mat-header-cell
-        >
-        <mat-cell *matCellDef="let row"> {{ row.telefone }}</mat-cell>
+        <mat-cell *matCellDef="let row"> {{ row.email }}</mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="actions">
@@ -63,20 +42,14 @@
         </mat-header-cell>
 
         <mat-cell *matCellDef="let row; let i = index">
-          <button
-            mat-icon-button
-            color="accent"
-            (click)="
-              startEdit(i, row.id, row.nome, row.area_interesse, row.telefone)
-            "
-          >
+          <button mat-icon-button color="accent" (click)="startEdit(i, row.id, row.email)">
             <mat-icon aria-label="Edit">edit</mat-icon>
           </button>
 
           <button
             mat-icon-button
             color="accent"
-            (click)="deleteItem(i, row.id, row.nome, row.area_interesse, row.telefone)"
+            (click)="deleteItem(i, row.id, row.email)"
           >
             <mat-icon aria-label="Delete">delete</mat-icon>
           </button>
@@ -87,17 +60,13 @@
       <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
     </mat-table>
 
-    <div class="no-results" [style.display]="dataSource || 'none'">
-      No results
-    </div>
-
-    <!-- <mat-paginator
+    <mat-paginator
       #paginator
-      [length]="dataSource.filteredData.length"
+      [length]="result.length"
       [pageIndex]="0"
       [pageSize]="10"
       [pageSizeOptions]="[5, 10, 25, 100]"
     >
-    </mat-paginator> -->
+    </mat-paginator>
   </div>
 </mat-sidenav-container>

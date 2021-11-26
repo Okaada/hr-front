@@ -1,90 +1,51 @@
-import {Injectable} from '@angular/core';
-import {BehaviorSubject} from 'rxjs';
-import {Issue} from '../models/issue';
-import {HttpClient, HttpErrorResponse} from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { DepartmentModel } from '../models/department';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { BaseService } from 'src/app/services/base.service';
 
 @Injectable()
-export class DataService {
-  private readonly API_URL = 'https://api.github.com/repos/angular/angular/issues';
-
-  dataChange: BehaviorSubject<Issue[]> = new BehaviorSubject<Issue[]>([]);
-  // Temporarily stores data from dialogs
+export class DataService extends BaseService<any, string> {
+  dataChange: BehaviorSubject<DepartmentModel[]> = new BehaviorSubject<
+    DepartmentModel[]
+  >([]);
   dialogData: any;
+  token = localStorage.getItem('currentUser') || '';
+  obj = JSON.parse(this.token);
 
-  constructor(private httpClient: HttpClient) {}
-
-  get data(): Issue[] {
-    return this.dataChange.value;
+  constructor(private httpClient: HttpClient) {
+    super('/api/Department/', httpClient);
   }
 
-  getDialogData() {
-    return this.dialogData;
+  getDepartments(): Observable<any> {
+    let auth = new HttpHeaders().set(
+      'Authorization',
+      `Bearer ${this.obj.token}`
+    );
+    return this.get(`departments`, { headers: auth });
   }
 
-  /** CRUD METHODS */
-  getAllIssues(): void {
-    this.httpClient.get<Issue[]>(this.API_URL).subscribe(data => {
-        this.dataChange.next(data);
-      },
-      (error: HttpErrorResponse) => {
-      console.log (error.name + ' ' + error.message);
-      });
+  updateDepartment(id: number, data: DepartmentModel): Observable<any> {
+    let auth = new HttpHeaders().set(
+      'Authorization',
+      `Bearer ${this.obj.token}`
+    );
+    return this.put(id, data, `update`, { headers: auth });
   }
 
-  // DEMO ONLY, you can find working methods below
-  addIssue(issue: Issue): void {
-    this.dialogData = issue;
+  deleteDepartment(id: number): Observable<any> {
+    let auth = new HttpHeaders().set(
+      'Authorization',
+      `Bearer ${this.obj.token}`
+    );
+    return this.delete(id, { headers: auth });
   }
 
-  updateIssue(issue: Issue): void {
-    this.dialogData = issue;
-  }
-
-  deleteIssue(id: number): void {
-    console.log(id);
+  addDepartment(body: DepartmentModel) {
+    let auth = new HttpHeaders().set(
+      'Authorization',
+      `Bearer ${this.obj.token}`
+    );
+    return this.post(body, '', { headers: auth });
   }
 }
-
-
-
-/* REAL LIFE CRUD Methods I've used in projects. ToasterService uses Material Toasts for displaying messages:
-
-    // ADD, POST METHOD
-    addItem(kanbanItem: KanbanItem): void {
-    this.httpClient.post(this.API_URL, kanbanItem).subscribe(data => {
-      this.dialogData = kanbanItem;
-      this.toasterService.showToaster('Successfully added', 3000);
-      },
-      (err: HttpErrorResponse) => {
-      this.toasterService.showToaster('Error occurred. Details: ' + err.name + ' ' + err.message, 8000);
-    });
-   }
-
-    // UPDATE, PUT METHOD
-     updateItem(kanbanItem: KanbanItem): void {
-    this.httpClient.put(this.API_URL + kanbanItem.id, kanbanItem).subscribe(data => {
-        this.dialogData = kanbanItem;
-        this.toasterService.showToaster('Successfully edited', 3000);
-      },
-      (err: HttpErrorResponse) => {
-        this.toasterService.showToaster('Error occurred. Details: ' + err.name + ' ' + err.message, 8000);
-      }
-    );
-  }
-
-  // DELETE METHOD
-  deleteItem(id: number): void {
-    this.httpClient.delete(this.API_URL + id).subscribe(data => {
-      console.log(data['']);
-        this.toasterService.showToaster('Successfully deleted', 3000);
-      },
-      (err: HttpErrorResponse) => {
-        this.toasterService.showToaster('Error occurred. Details: ' + err.name + ' ' + err.message, 8000);
-      }
-    );
-  }
-*/
-
-
-
-

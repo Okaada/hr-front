@@ -2,7 +2,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Component, Inject } from '@angular/core';
 import { DataService } from '../../services/data.service';
 import { FormControl, Validators } from '@angular/forms';
-import { Issue } from '../../models/issue';
+import { DepartmentModel } from '../../models/department';
 
 @Component({
   selector: 'app-add.dialog',
@@ -12,7 +12,7 @@ import { Issue } from '../../models/issue';
 export class AddDepartmentDialogComponent {
   constructor(
     public dialogRef: MatDialogRef<AddDepartmentDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Issue,
+    @Inject(MAT_DIALOG_DATA) public data: DepartmentModel,
     public dataService: DataService
   ) {}
 
@@ -33,7 +33,7 @@ export class AddDepartmentDialogComponent {
     this.dialogRef.close();
   }
 
-  public confirmAdd(): void {
-    this.dataService.addIssue(this.data);
+  public confirmAdd(data: any): void {
+    this.dataService.addDepartment(data).subscribe();
   }
 }

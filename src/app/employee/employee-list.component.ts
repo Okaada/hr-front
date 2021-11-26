@@ -12,7 +12,7 @@ import { map } from 'rxjs/operators';
 import { AddEmployeeDialogComponent } from './dialogs/add/add.dialog.component';
 import { DeleteEmployeeDialogComponent } from './dialogs/delete/delete.dialog.component';
 import { EditEmployeeDialogComponent } from './dialogs/edit/edit.dialog.component';
-import { Issue } from './models/issue';
+import { Issue } from './models/EmployeeModel';
 import { DataService } from './services/data.service';
 
 @Component({

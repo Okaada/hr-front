@@ -18,6 +18,6 @@ export class DeleteUserDialogComponent {
   }
 
   confirmDelete(): void {
-    this.dataService.deleteIssue(this.data.id);
+    this.dataService.deleteUser(this.data.id).subscribe();
   }
 }

@@ -34,7 +34,6 @@ export class AddCandidateDialogComponent {
   }
 
   public confirmAdd(data: any): void {
-    console.log(this.data)
     this.dataService.addCandidate(data).subscribe();
   }
 }
